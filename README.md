@@ -2,7 +2,7 @@
 
 This repo is the synthesis of all the exercices asked during the Machine Learning course I followed at Ynov in 2019.
 
-The lesson was given by Jeff Abrahamson, whom gave us the basics needed to understand properly the base mechanism of Machine Learning
+The lesson was given by Jeff Abrahamson @JeffAbrahamson, whom gave us the basics needed to understand properly the base mechanism of Machine Learning
 
 
 To execute the examples, ensure you have installed Python3.6 and all the libraries listed in `requirements.txt`
@@ -53,7 +53,7 @@ He then introduces us to [`linear regression`](https://en.wikipedia.org/wiki/Lin
 
 To do so we have to use the `gradient descent` algorithm which is aimed at finding a local minimal value.
 
-Using this on our cost function, this will help to approximate the best values of  θ^(_0) and θ^(_1) to minimize the cost function value.
+Using this on our cost function, this will help to approximate the best values of θ0 and θ1 to minimize the cost function value.
 
 So we did implement the gradient descent in 'gradient_descent.py' and use the one available in scikit learn in `gradient_descent_w_scikit.py`.
 
