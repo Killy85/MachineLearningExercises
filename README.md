@@ -102,3 +102,37 @@ To run it, imagining you have a shell at the root of this git project, just type
 $ cd 03
 $ python logistic_regression.py
 ```
+
+
+### 04 - Infinitesimal calculus
+
+We were introduced to infinitesimal calculus and had to do some calculation using python.
+
+
+Two things to do:
+* Approach the value **e** using the fact that if **a == e** then **ln(a) = 1**
+    That's what the `approching_e.py` script do.
+    To launch it you just have to type the following in your shell:
+    
+```console
+$ cd 04
+$ python approching_e.py
+```
+
+* Calculate the value of **e** locally using the Taylor's sequence
+
+    That's what the `taylor_for_x.py` script do.
+    To launch it you just have to type the following in your shell:
+    
+```console
+$ cd 04
+$ python approching_e.py
+```
+
+    you can also choose the **x** you want to calculate using:
+
+```console
+$ cd 04
+$ python approching_e.py 15
+```
+This will calculate the value around 15.
