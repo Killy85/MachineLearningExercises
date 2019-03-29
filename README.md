@@ -136,3 +136,39 @@ $ cd 04
 $ python approching_e.py 15
 ```
 This will calculate the value around 15.
+
+### 05 - Recommendation
+
+We then studied recommendation algorithms. Thoses algorithms aims a predicting content for users according to differents values.
+
+There is 3 types of recommendations:
+
+* Content-based recommendation
+* Collaborative recommendation
+* Knowledge-Based recommendation
+
+We studied the first 2 of them, the third one being expensive and hard to apply.
+
+The first script, `movielens.py`, is downloading the movielens corpus which contain matching between users and film and the corresponding rating.
+
+We train a model, using [`surprise`](http://surpriselib.com/) which ,thanks to linear regression, is able to predict how a user will rate a film according to how he noted other ones, and the way other users scored them too. At first launch, you may have to download the corpus!
+
+To launch it, type the following:
+
+```console
+$ cd 05
+$ python movielens.py
+```
+
+The second one aim at creating a recommendation engine enabling us to choose **n** papers related to the one we choose. This is the system we may use if we manage a website and we wand to offer more papers to our users to read.
+
+At the moment it takes scientific papers from this [repo](https://github.com/elsevierlabs/OA-STM-Corpus) to train and test the model.
+
+All the documents are available directly in this repo. What the programme is showing are the most relevant elements accordingly to the test element.
+
+To run this example, you just have to type:
+
+```console
+$ cd 05
+$ python tfidf.py
+```
