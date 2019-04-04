@@ -19,16 +19,21 @@ reg = LinearRegression().fit(X, y)
 
 x_print, y_print = [elem[0] for elem in points],[elem[1] for elem in points]
 
-x = np.arange(1552690800,1554242400,20)
+x = np.arange(1552490800,1554442400,20)
 y_hat = [reg.predict(np.array([[elem]]).reshape(-1, 1)) for elem in x]
 
-print(reg.predict(np.array([time.mktime(datetime.datetime.strptime('2019-04-04', "%Y-%m-%d").timetuple())]).reshape(-1, 1)))
+tommorow = time.mktime(datetime.datetime.strptime('2019-04-04', "%Y-%m-%d").timetuple())
+tommorow_pred = reg.predict(np.array([tommorow]).reshape(-1, 1))
+
 
 plt.figure(1)
 sub_1 = plt.subplot(211)
+plt.plot(x,y_hat, color='blue')
 plt.scatter(X, y)
+plt.xlabel("Timestamp of the date")
+plt.ylabel('Electrical counter value')
+plt.scatter(tommorow,tommorow_pred, color='red')
 
-plt.plot(x,y_hat)
 
 plt.show()
 
