@@ -1,4 +1,5 @@
 from sklearn.linear_model import LogisticRegression
+import matplotlib.pyplot as plt
 
 #Arbitrary generated list of points
 A = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
@@ -35,10 +36,6 @@ B = [[1, 15], [2, 14], [2, 15], [3, 13], [3, 14], [3, 15], [4, 12],
     [15, 6], [15, 7], [15, 8], [15, 9], [15, 10], [15, 11], [15, 12], 
     [15, 13], [15, 14], [15, 15]]
 
-
-
-
-
 def main():
     """
     This method aim at creating a model using the sklearn Logistic regression
@@ -62,6 +59,19 @@ def main():
         prediction = reg.predict([elem])
         predicted = 'B' if prediction else 'A'
         print(f'The element {elem} is considered from class {predicted} by our model')
+
+    # We plot the different elems 
+    plt.figure(1)
+    sub_1 = plt.subplot(211)
+    x_a,y_a = [elem[0] for elem in A],[elem[1] for elem in A]
+    plt.scatter(x_a, y_a, color='blue')
+    x_b,y_b = [elem[0] for elem in B],[elem[1] for elem in B]
+    plt.scatter(x_b, y_b, color='red')
+    x_test,y_test = [elem[0] for elem in tests_elem],[elem[1] for elem in tests_elem]
+    plt.scatter(x_test,y_test,color='green')
+
+
+    plt.show()
 
 
 if __name__ == "__main__":
