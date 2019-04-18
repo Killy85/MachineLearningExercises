@@ -31,9 +31,9 @@ def benchmark_classifiers(dataset):
         f_measure = stats['f1']
         print(f' Classifier {key} \n ------------------\n')
         print(f' Correctness : {correctness:.2f}% \n Precision : {precision:.2f}% \n Recall : {recall:.2f}% \n F1 Measure : {f_measure:.2f}%')
-        print(f' Whole execution process lasted {time_train+time_exec:.2f} seconds (mean of 10 executions)\n')
-        print(f' Training length : {time_train:.2f} seconds (mean of 10 executions)\n')
-        print(f' Testing length : {time_exec:.2f} seconds (mean of 10 executions)\n')
+        print(f' Whole execution process lasted {(time_train+time_exec)*0.1:.2f} seconds (mean of 10 executions)\n')
+        print(f' Training length : {time_train*0.1:.2f} seconds (mean of 10 executions)\n')
+        print(f' Testing length : {time_exec*0.1:.2f} seconds (mean of 10 executions)\n')
 
 
 if __name__ == '__main__':
