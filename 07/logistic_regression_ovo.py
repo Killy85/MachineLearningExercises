@@ -1,20 +1,15 @@
-import numpy as np
-from sklearn import datasets
+import operator
+import itertools
+
+from basePredictor import BasePredictor
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-import itertools
-import operator
 
 
-class OvOPredictor:
 
-    def __init__(self,input, target, test_size=0.2):
-        self.x_train,self.x_test, self.y_train,  self.y_test = train_test_split(input,target, test_size=test_size)
-        self.test_values = [(self.x_test[index],value) for index, value in enumerate(self.y_test)]
-        self.classes = set(target)
+class OvOPredictor(BasePredictor):
 
-
-    def _generateOvOClassifier(self):
+    def _generate_classifier(self):
         o_vs_o_classifiers = {}
         for elem in itertools.combinations(self.classes,2):
             class0 = [self.x_train[index] for index, value in enumerate(self.y_train) if value == elem[0]]
@@ -24,7 +19,7 @@ class OvOPredictor:
             o_vs_o_classifiers['%d_%d'%elem] = LogisticRegression(solver='lbfgs').fit(learn, value)
         return o_vs_o_classifiers
 
-    def _predictOVO(self, o_vs_o_classifiers):
+    def _predict(self, classifiers):
         """
         TO DO : STATS
         """
@@ -33,8 +28,8 @@ class OvOPredictor:
         i=0
         for elem in self.test_values:
             intern_result = {}
-            for name,classifiers in o_vs_o_classifiers.items():
-                result = classifiers.predict([elem[0]])
+            for name,classifier in classifiers.items():
+                result = classifier.predict([elem[0]])
                 members = name.split('_')
                 if intern_result.get(members[result[0]]):
                     intern_result[members[result[0]]] += 1
@@ -61,10 +56,6 @@ class OvOPredictor:
         f_measure = ((precision * recall)/(precision + recall))*2
         return {'correctness' :  correctness, 'precision' : precision,
                 'recall' : recall, 'f1' : f_measure}
-
-    def run_predict(self):
-        ovo_predict = self._generateOvOClassifier()
-        return self._predictOVO(ovo_predict)
 
 
 
