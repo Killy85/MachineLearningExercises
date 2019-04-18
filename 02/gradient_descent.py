@@ -24,6 +24,8 @@ def main():
     df_0 = lambda x, y: reduce(lambda x,y : x+y,[(x + y * a) - b for a,b in points])
     df_1 = lambda x, y: reduce(lambda x,y : x+y,[((x + y * a) - b) * a for a,b in points])
 
+    # We iterate until we reach our maximum iteration number
+    # or our precision
     for i in range(max_iters):
         teta_0 = next_0
         teta_1 = next_1
@@ -35,7 +37,13 @@ def main():
 
     plot(points, next_0, next_1)
 
+
 def plot(points, teta_0, teta_1):
+    """ This function just aim at plotting the results
+
+        It may be added to an external class later, but this
+        is still quite specific
+    """
     plt.figure(1)
     plt.subplot(211)
     x,y = [elem[0] for elem in points], [elem[1] for elem in points]

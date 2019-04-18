@@ -21,6 +21,14 @@ Python 3.6.7
 ```
 or higher.
 
+We use to plot our result to make them more understandable, this means we use Tkinter. To install it, run :
+
+```console
+$ apt install python3-tk
+```
+
+you may need to run it with `sudo`
+
 For the requirements you'll have to run 
 
 ```console
