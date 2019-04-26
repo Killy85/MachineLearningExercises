@@ -39,8 +39,8 @@ class Network:
                       for elem in self.neurons]
             predicted = scores.index(max(scores))
             if predicted != int(Y_data[index]):
-                self.neurons[int(predicted)].forget((image > 8) * image)
-                self.neurons[int(Y_data[index])].learn((image > 8) * image)
+                self.neurons[int(predicted)].forget((image > 13) * image)
+                self.neurons[int(Y_data[index])].learn((image > 13) * image)
 
             if show_weigth:
                 self.showSprite([elem.get_showable_matrix()
