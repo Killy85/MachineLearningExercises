@@ -180,3 +180,42 @@ To run this example, you just have to type:
 $ cd 05
 $ python tfidf.py
 ```
+
+### 07 - Benchmarking differents techniques
+
+During this TP the goal was to compare the differents techniques for the same use case.
+To do so, I updated the classifiers I already use to have the same base class.
+
+You may find all of them to derive from the `basePredictor.py` file.
+
+In the main file, I run each classifier, showing the results in terms of precision but also efficiency and speed.
+
+To run the program, you may do the following:
+
+```console
+$ cd 07
+$ python main.py
+```
+
+It will output stats for each classifier I already implemented
+
+#### *Here come a new classifier*
+
+According to TP 8, we had to create a *handmade* neural network, which must be able to recognize digits. It has been added to the benchmark but is only available for the MNIST dataset.
+
+
+### 08 - Our first neural network
+
+It was time for us to be introduced to the neural network theory.
+To be sure we understand the theory, we were asked to create a program doing a *perceptron*-like algorithm using the underlying scheme of a neural network.
+
+You can find information on what has been made with commentary on the code.
+
+To launch the example, just run :
+
+```console
+$ cd 08
+$ python main.py
+```
+
+You may activate/deactivate the display of the memory state of the neuron by changed the state of `show_weigth` in `main.py l.24`.
