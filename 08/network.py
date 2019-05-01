@@ -5,6 +5,11 @@ import time
 
 from neuron import Neuron
 
+def border(img):
+    bordersize = 10
+    return cv2.copyMakeBorder(img, top=bordersize, bottom=bordersize, left=bordersize,
+                        right=bordersize, borderType=cv2.BORDER_CONSTANT, value=0)
+
 
 class Network:
     """The class is a basic implementation of a neural network.
@@ -35,6 +40,7 @@ class Network:
                                                         (default: {False})
         """
         for index, image in enumerate(X_data):
+            img = None
             scores = [elem.get_prediction_weigth(image)
                       for elem in self.neurons]
             predicted = scores.index(max(scores))
@@ -43,8 +49,11 @@ class Network:
                 self.neurons[int(Y_data[index])].learn((image > 13) * image)
 
             if show_weigth:
-                self.showSprite([elem.get_showable_matrix()
+                img = self.showSprite([elem.get_showable_matrix()
                                  for elem in self.neurons])
+        cv2.destroyAllWindows()
+        return img
+
 
     def showSprite(self, spritesData):
         """Display the neurons memory using opencv
@@ -57,16 +66,17 @@ class Network:
                   interpolation=cv2.INTER_AREA)
                   for frame in images]
 
-        vertical_1 = np.vstack((images[0], images[5]))
-        vertical_2 = np.vstack((images[1], images[6]))
-        vertical_3 = np.vstack((images[2], images[7]))
-        vertical_4 = np.vstack((images[3], images[8]))
-        vertical_5 = np.vstack((images[4], images[9]))
+        vertical_1 = np.vstack((border(images[0]), border(images[5])))
+        vertical_2 = np.vstack((border(images[1]), border(images[6])))
+        vertical_3 = np.vstack((border(images[2]), border(images[7])))
+        vertical_4 = np.vstack((border(images[3]), border(images[8])))
+        vertical_5 = np.vstack((border(images[4]), border(images[9])))
 
         img = np.hstack((vertical_1, vertical_2, vertical_3,
                         vertical_4, vertical_5))
         cv2.imshow("Window", np.uint8(img))
         cv2.waitKey(1)
+        return np.uint8(img)
 
     def test(self, x_test, y_test):
         """Testing the neural net according to test data

@@ -5,7 +5,7 @@ class Neuron:
 
     def __init__(self, dimension):
         # Instantiate the neuron memory with random data (between -1 and 1)
-        self.data = np.asarray([0 for elem in range(0, dimension)])
+        self.data = np.asarray([randint(0,1) for elem in range(0, dimension)])
 
     def learn(self, input_data):
         """This method is used to update neuron memory while training

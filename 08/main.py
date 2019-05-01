@@ -21,8 +21,17 @@ x_train, x_test, y_train, y_test = train_test_split(
 # We then fit the data on our network
 # The show_weigth argument tell if you wan't to
 # display the neurons memory state
-NET.fit(x_train, y_train, show_weigth=True)
-time.sleep(3)
+show_weigth = True
+memory = NET.fit(x_train, y_train, show_weigth=show_weigth)
+if show_weigth:
+    cv2.imshow('Neurons final memory ( Press ESC to quit, s to save the image and quit)', memory)
+    k = cv2.waitKey(0)
+    if k == 27:         # wait for ESC key to exit
+        cv2.destroyAllWindows()
+    elif k == ord('s'): # wait for 's' key to save and exit
+        cv2.imwrite('memory.png', memory)
+        cv2.destroyAllWindows()
+
 # We use the test set to test our network
 results = NET.test(x_test, y_test)
 
