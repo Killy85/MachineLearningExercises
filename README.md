@@ -219,3 +219,12 @@ $ python main.py
 ```
 
 You may activate/deactivate the display of the memory state of the neuron by changed the state of `show_weigth` in `main.py l.24`.
+
+### 09 - Using Tensorflow and Keras
+
+Last sessions where about deeper dive into neural networks theory. To do so, we used Keras, as an abstraction for Tensorflow.
+Thoses librarys enables us to easily create a complex neural network which answer correctly our problematic.
+
+The following alogrithms are added to the 07 folder, in order to easily use them in the benchmark
+
+You may go back to 07 to learn more about how you may launch and test the following code.
